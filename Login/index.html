@@ -1,1 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication UI</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
 
+    
+        <div id="loginSection" class="card active">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <label>Email / Phone Number</label>
+                <input type="text" id="loginId" placeholder="Enter your email or phone number" required>
+                <small class="error" id="loginError"></small>
+
+                <label>Password</label>
+                <div class="password-wrapper">
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                    <span class="toggle" onclick="togglePassword('password')">👁</span>
+                </div>
+
+                <a href="#" class="link" onclick="showSection('forgotSection')">Forgot Password?</a>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
+        
+        <div id="forgotSection" class="card">
+            <h2>Forgot Password</h2>
+            <label>Enter your Email</label>
+            <input type="email" id="email" placeholder="Enter your registered email" required>
+            <small class="error" id="emailError"></small>
+            <button onclick="sendOTP()">Send OTP</button>
+            <p class="link" onclick="showSection('loginSection')">Back to Login</p>
+        </div>
+
+        
+        <div id="otpSection" class="card">
+            <h2>Verify OTP</h2>
+            <p>Enter the 6-digit OTP sent to your email</p>
+            <div class="otp-container">
+                <input type="text" maxlength="1" class="otp-input">
+                <input type="text" maxlength="1" class="otp-input">
+                <input type="text" maxlength="1" class="otp-input">
+                <input type="text" maxlength="1" class="otp-input">
+                <input type="text" maxlength="1" class="otp-input">
+                <input type="text" maxlength="1" class="otp-input">
+            </div>
+            <small class="error" id="otpError"></small>
+            <button onclick="verifyOTP()">Verify OTP</button>
+            <p class="link" onclick="sendOTP()">Resend OTP</p>
+        </div>
+
+    
+        <div id="resetSection" class="card">
+            <h2>Reset Password</h2>
+
+            <label>New Password</label>
+            <div class="password-wrapper">
+                <input type="password" id="newPassword" placeholder="Enter new password" required>
+                <span class="toggle" onclick="togglePassword('newPassword')">👁</span>
+            </div>
+            <div class="strength-meter">
+                <div id="strengthBar"></div>
+            </div>
+            <small id="strengthText"></small>
+
+            <label>Confirm New Password</label>
+            <div class="password-wrapper">
+                <input type="password" id="confirmPassword" placeholder="Confirm new password" required>
+                <span class="toggle" onclick="togglePassword('confirmPassword')">👁</span>
+            </div>
+            <small class="error" id="passwordError"></small>
+
+            <button onclick="resetPassword()">Reset Password</button>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
