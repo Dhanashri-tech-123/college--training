@@ -1,1 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<link rel="stylesheet" href="style.css">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+<div class="main">
+<div class="card" id="loginBox">
+<div class="top-icon"><i class="fa fa-user"></i></div>
+<h2>Login</h2>
+
+<div class="input-group">
+<label>Email / Phone</label>
+<div class="input-box">
+<i class="fa fa-user"></i>
+<input type="text" id="loginEmail" placeholder="Enter email or phone">
+</div>
+<div class="error" id="loginEmailError"></div>
+</div>
+
+<div class="input-group">
+<label>Password</label>
+<div class="input-box">
+<i class="fa fa-lock"></i>
+<input type="password" id="loginPassword" placeholder="Enter password">
+<i class="fa fa-eye toggle" onclick="togglePassword('loginPassword',this)"></i>
+</div>
+<div class="error" id="loginPasswordError"></div>
+</div>
+
+<div class="row">
+<label><input type="checkbox"> Remember me</label>
+<span class="link" onclick="showForgot()">Forgot Password?</span>
+</div>
+
+<button onclick="login()">Login</button>
+
+<p class="bottom-text">Don't have an account? <span class="link">Sign up</span></p>
+</div>
+
+
+<div class="card hidden" id="forgotBox">
+<div class="top-icon"><i class="fa fa-envelope"></i></div>
+<h2>Forgot Password</h2>
+
+<div class="input-group">
+<label>Email</label>
+<div class="input-box">
+<i class="fa fa-envelope"></i>
+<input type="text" id="forgotEmail" placeholder="Enter email">
+</div>
+<div class="error" id="forgotEmailError"></div>
+</div>
+
+<button onclick="sendOTP()">Send OTP</button>
+<p class="link" onclick="showLogin()">← Back to Login</p>
+</div>
+
+
+<div class="card hidden" id="otpBox">
+<div class="top-icon"><i class="fa fa-envelope-open"></i></div>
+<h2>Verify OTP</h2>
+
+<div class="otp-container">
+<input maxlength="1">
+<input maxlength="1">
+<input maxlength="1">
+<input maxlength="1">
+<input maxlength="1">
+<input maxlength="1">
+</div>
+
+<div class="error" id="otpError"></div>
+
+<p class="bottom-text">Didn't receive OTP? <span class="link" onclick="resendOTP()">Resend OTP</span></p>
+
+<button onclick="verifyOTP()">Verify OTP</button>
+</div>
+
+
+<div class="card hidden" id="resetBox">
+<div class="top-icon"><i class="fa fa-key"></i></div>
+<h2>Reset Password</h2>
+
+<div class="input-group">
+<label>New Password</label>
+<div class="input-box">
+<i class="fa fa-key"></i>
+<input type="password" id="newPassword" placeholder="New password">
+<i class="fa fa-eye toggle" onclick="togglePassword('newPassword',this)"></i>
+</div>
+<div class="strength" id="strengthText"></div>
+<div class="error" id="newPasswordError"></div>
+</div>
+
+<div class="input-group">
+<label>Confirm Password</label>
+<div class="input-box">
+<i class="fa fa-key"></i>
+<input type="password" id="confirmPassword" placeholder="Confirm password">
+<i class="fa fa-eye toggle" onclick="togglePassword('confirmPassword',this)"></i>
+</div>
+<div class="error" id="confirmPasswordError"></div>
+</div>
+
+<button onclick="resetPassword()">Reset Password</button>
+
+<p class="link" onclick="showLogin()">← Back to Login</p>
+</div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
